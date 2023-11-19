@@ -1,6 +1,8 @@
 package repo;
 
 import model.Student;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 import java.util.LinkedList;
@@ -8,6 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class StudentRepository implements CrudOperation<Student>{
+    private static final Logger logger = LoggerFactory.getLogger(StudentRepository.class);
     public List<Student> students = new LinkedList<>();
     int currentId;
 
@@ -20,7 +23,7 @@ public class StudentRepository implements CrudOperation<Student>{
         student.setId(++currentId);
         student.setCreatedAt(LocalDateTime.now());
         students.add(student);
-        System.out.println("Add successfully!!" );
+        logger.info("Add successfully!!" );
     }
 
     @Override
@@ -30,7 +33,7 @@ public class StudentRepository implements CrudOperation<Student>{
                 return student;
             }
         }
-        System.out.println("model.Student's not found with ID: " + id);
+        logger.error("model.Student's not found with ID: " + id);
         return null;
     }
 
@@ -38,7 +41,7 @@ public class StudentRepository implements CrudOperation<Student>{
     public void update(Student student) {
 
         student.setUpdatedAt(LocalDateTime.now());
-        System.out.println("Update successfully");
+        logger.info("Update successfully");
     }
 
     @Override
@@ -54,7 +57,7 @@ public class StudentRepository implements CrudOperation<Student>{
     @Override
     public void delete(Student student) {
         students.remove(student);
-        System.out.println("Delete successfully");
+        logger.info("Delete successfully");
         students.add(student);
     }
 }

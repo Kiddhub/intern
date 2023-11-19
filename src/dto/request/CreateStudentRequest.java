@@ -1,8 +1,13 @@
 package dto.request;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Scanner;
 
 public class CreateStudentRequest {
+
+    private static final Logger logger = LoggerFactory.getLogger(UpdateStudentRequest.class);
 
     private String name;
     private String address;
@@ -54,33 +59,20 @@ public class CreateStudentRequest {
     public static CreateStudentRequest inputStudent(){
         Scanner scanner = new Scanner(System.in);
         CreateStudentRequest studentRequest = new CreateStudentRequest();
-        System.out.println("Please fill this form below: ");
-        System.out.print("Input name: ");
+        logger.info("Please fill this form below: ");
+        logger.info("Input name: ");
         studentRequest.setName(scanner.nextLine());
-        System.out.print("Input age: ");
+        logger.info("Input age: ");
         studentRequest.setAge(scanner.nextInt());
         scanner.nextLine();
-        System.out.print("Input phone: ");
+        logger.info("Input phone: ");
         studentRequest.setPhone(scanner.nextLine());
-        System.out.print("Input Address: ");
+        logger.info("Input Address: ");
         studentRequest.setAddress(scanner.nextLine());
         return studentRequest;
     }
 
-    public static CreateStudentRequest updateStudent(){
-        Scanner scanner = new Scanner(System.in);
-        CreateStudentRequest updatedStudent = new CreateStudentRequest();
-        System.out.print("Please input new name: ");
-        updatedStudent.setName(scanner.nextLine());
-        System.out.print("Please input new age: ");
-        updatedStudent.setAge(scanner.nextInt());
-        scanner.nextLine();
-        System.out.print("Please input new phone: ");
-        updatedStudent.setPhone(scanner.nextLine());
-        System.out.print("Please input new address: ");
-        updatedStudent.setAddress(scanner.nextLine());
-        return updatedStudent;
-    }
+
 
     @Override
     public String toString() {

@@ -1,5 +1,6 @@
 package service.implement;
 
+import dto.request.UpdateStudentRequest;
 import model.Student;
 import repo.StudentRepository;
 import dto.request.CreateStudentRequest;
@@ -8,6 +9,7 @@ import service.StudentService;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class StudentServiceImplement implements StudentService {
 
@@ -39,7 +41,7 @@ public class StudentServiceImplement implements StudentService {
     }
 
     @Override
-    public void updateStudent(CreateStudentRequest studentRequest) {
+    public void updateStudent(UpdateStudentRequest studentRequest) {
         System.out.print("Please input ID: ");
         int studentId = scanner.nextInt();
         Student updatedStudent = studentRepository.search(studentId);

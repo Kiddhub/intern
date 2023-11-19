@@ -7,5 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="slf4j.api" level="project" />
+    <orderEntry type="library" exported="" name="ch.qos.logback.classic" level="project" />
   </component>
 </module>
